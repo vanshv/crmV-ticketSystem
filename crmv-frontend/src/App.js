@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { DefaultLayout } from './layout/DefaultLayout';
 import { Dashboard } from './pages/dashboard/Dashboard.page';
 import { AddTicket } from './pages/new ticket/addTicket.page';
+import {TicketLists} from './pages/ticket-list/TicketLists.page';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       {/* <Entry/> */}
       <DefaultLayout>
         {/* <Dashboard/> */}
-        <AddTicket/>
+        {/* <AddTicket/> */}
+        <TicketLists/>
       </DefaultLayout>
     </div>
   );

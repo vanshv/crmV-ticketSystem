@@ -13,14 +13,15 @@ const initialFrmError = {
     subject: false,
     issueDate: false,
     detail: false,
-};
+};  
 
 export const AddTicket = () =>{
     const [frmData, setFrmData] = useState(initialFrmDt); 
     const [frmDataError, setErrorDataError] = useState(initialFrmError);
     useEffect(() => {}, [frmData, frmDataError])
+    //forgot what this does, maybe it will become clear later
 
-    const handleOnChange = (e) =>{
+    const handleOnChange = (e) => {
         const {name, value} = e.target
         
         setFrmData({
@@ -34,6 +35,7 @@ export const AddTicket = () =>{
 
         setErrorDataError(initialFrmError)
         const isSubjectValid = await shortText(frmData.subject)
+        // no need for await here, but for now just know it exists lol
 
         setErrorDataError({
             ...initialFrmError,
