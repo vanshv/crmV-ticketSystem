@@ -29,6 +29,8 @@ const UserSchema = new Schema({
     password: {
         type: String,
         minlength: 8,
+        //hashing invalidates this?
+
         required: true,
     },
 });

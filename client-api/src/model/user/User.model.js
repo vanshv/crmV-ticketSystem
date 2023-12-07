@@ -9,6 +9,19 @@ const insertUser = (userObj) => {
     });
 };
 
+const getUserByEmail = async (email) => {
+    try {
+        if(!email) return false;
+        const instance = await UserSchema.findOne({email});
+        return instance;
+    }
+    //change promise to await statement
+    catch(error){
+        reject(error);
+    }
+};
+
 module.exports = {
     insertUser,
+    getUserByEmail,
 };
