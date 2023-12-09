@@ -1,4 +1,5 @@
-const {UserSchema} = require('./User.schema')
+const {token} = require('morgan');
+const {UserSchema} = require('./User.schema');
 
 const insertUser = (userObj) => {
     return new Promise((resolve, reject) => {
@@ -15,13 +16,50 @@ const getUserByEmail = async (email) => {
         const instance = await UserSchema.findOne({email});
         return instance;
     }
-    //change promise to await statement
+    //changed promise to await statement
     catch(error){
         reject(error);
     }
 };
 
+const getUserById = async (_id) => {
+    try {
+        if(!_id) return false;
+        const instance = await UserSchema.findOne({_id});
+        return instance;
+    }
+    //changed promise to await statement
+    catch(error){
+        reject(error);
+    }
+};
+
+//this sets refreshJWT, where is this used
+const storeUserRefreshJWT = (_id, token) => {
+    return new Promise((resolve, reject) => {
+        try{
+            UserSchema.findOneAndUpdate(
+                {_id}, 
+                {
+                    $set : {"refreshJWT.token": token, "refreshJWT.addedAt": Date.now()},
+                },
+                {new: true},
+            )
+            .then((data) => resolve(data))
+            .catch((error) => {
+                console.log(error);
+                reject(error);
+            });
+        } catch (error){
+            console.log(error);
+            reject(error);
+        };
+    });
+};
+
 module.exports = {
     insertUser,
     getUserByEmail,
+    getUserById,
+    storeUserRefreshJWT,
 };

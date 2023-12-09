@@ -1,14 +1,23 @@
 const express = require("express");
 const {route, post} = require('./ticket.router');
 const router = express.Router();
-const {insertUser, getUserByEmail} = require('../model/user/User.model');
+const {insertUser, getUserByEmail, getUserById} = require('../model/user/User.model');
 const {hashPassword, comparePassword} = require('../helpers/bcrypt.helper');
-const {createAccessJWT, createRefreshJWT} = require('../helpers/jwt.helper')
+const {createAccessJWT, createRefreshJWT} = require('../helpers/jwt.helper');
+const {userAuthorization} = require('../middlewares/authorization.middleware');
 
 router.all('/', (req, res, next) => {
     // res.json({message: "hello from user router"});
 
     next();
+});
+
+//Get user profile router
+router.get('/', userAuthorization, async (req, res) => {
+    const _id = req.userId;
+    const userProf = await getUserById(_id);
+    console.log(userProf);
+    res.json({user: userProf});
 });
 
 //Create new user router
@@ -17,7 +26,6 @@ router.post('/', async (req, res) => {
 
     try{
         const hashedPass = await hashPassword(password);
-
         const newUserObj = {
             name,
             company,
@@ -28,8 +36,6 @@ router.post('/', async (req, res) => {
         };
 
         const result = await insertUser(newUserObj);
-        console.log(result);
-
         res.json({message: "new user created", result});
     } catch(error){
         console.log(error);
@@ -61,8 +67,8 @@ router.post('/login', async(req, res) => {
         return res.json({staus: "success", message: "Login succesful"});
     }
 
-    const accessJWT = await createAccessJWT(user.email);
-    const refreshJWT = await createRefreshJWT(user.email);
+    const accessJWT = await createAccessJWT(user.email, `${user._id}`);
+    const refreshJWT = await createRefreshJWT(user.email, `${user._id}`);
 
     res.json({
         status: 'success',
