@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
     "email": "vanshvsa123@gmail.com",
-    "password": "vanshvsa123"
+    "password": "idkmypassplease123"
 }
 
 ### Get a user profile endpoint
@@ -34,7 +34,23 @@ Authorization: ###Token routers
 GET http://localhost:3001/v1/tokens
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzA0NzEzODU1fQ.5oIEYTqYQ0u6UKicMjiuVbm8wswKRqkiCXf0p_NjDuw
 
+#### Password reset request endpoints
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
 
+{
+    "email": "vanshvsa123@gmail.com"
+}
+
+#### Update new password endpoint
+PATCH http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
+
+{
+    "email": "vanshvsa123@gmail.com", 
+    "pin": 547399, 
+    "newPassword": "idkmypassplease123"
+}
 
 //bugs
 
@@ -42,13 +58,3 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIz
 //i can set this in mongosh wtih 
 //db.users.createIndex({email:1}, {unique:true})
 //need to do this everytime mongosh is opened
-
-//refreshJWT field token not added, 
-//even through addedAt is added, token field is empty
-
-# {
-#   "status": "success",
-#   "message": "Login Successful",
-#   "accessJWT": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM",
-#   "refreshJWT": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzA0NzEzODU1fQ.5oIEYTqYQ0u6UKicMjiuVbm8wswKRqkiCXf0p_NjDuw"
-# }

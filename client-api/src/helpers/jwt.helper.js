@@ -23,7 +23,6 @@ const createRefreshJWT = async (email, _id) => {
             expiresIn: "30d",
         });
         
-        console.log(refreshJWT);
         await storeUserRefreshJWT(_id, refreshJWT);
         return Promise.resolve(refreshJWT);
     }
@@ -33,7 +32,7 @@ const createRefreshJWT = async (email, _id) => {
 };
 
 //where are these used?
-verifyAccessJWT = (userJWT) => {
+const verifyAccessJWT = (userJWT) => {
     try{
         return Promise.resolve(jwt.verify(userJWT, process.env.JWT_ACCESS_SECRET));
     }
@@ -42,7 +41,7 @@ verifyAccessJWT = (userJWT) => {
     }
 };
 
-verifyRefreshJWT = (userJWT) => {
+const verifyRefreshJWT = (userJWT) => {
     try{
         return Promise.resolve(jwt.verify(userJWT, process.env.JWT_REFRESH_SECRET));
     }
