@@ -8,6 +8,8 @@ const {userAuthorization} = require('../middlewares/authorization.middleware');
 const {setPasswordResetPin, getPinByEmail, deletePin} = require('../model/resetPin/ResetPin.model');
 const {emailProcessor} = require('../helpers/email.helper');
 const {resetPassReqValidation, updatePassValidation} = require('../middlewares/formValidation.middleware');
+const { verify } = require("jsonwebtoken");
+const { deleteJWT } = require("../helpers/redis.helper");
 
 router.all('/', (req, res, next) => {
     // res.json({message: "hello from user router"});
@@ -144,5 +146,22 @@ router.patch('/reset-password', updatePassValidation, async (req, res) => {
         message: "your password has been updated",
     });
 });
+
+// User logout and invalidate jwts
+router.delete("/logout", userAuthorization, async (req, res) => {
+    const { authorization } = req.headers;
+    const _id = req.userId;
+    deleteJWT(authorization);
+    const result = await storeUserRefreshJWT(_id, "");
+    
+    if (result._id) {
+      return res.json({ status: "success", message: "Loged out successfully" });
+    }
+  
+    res.json({
+      status: "error",
+      message: "Unable to logg you out, plz try again later",
+    });
+  });
 
 module.exports = router;

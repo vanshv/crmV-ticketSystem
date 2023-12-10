@@ -51,6 +51,9 @@ const emailProcessor = ({email, pin, type}) => {
             }
             send(info);
             break;
+        
+        default:
+            break;
     }
 };
 

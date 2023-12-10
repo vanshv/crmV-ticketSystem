@@ -3,12 +3,12 @@ POST http://localhost:3001/v1/user
 Content-Type: application/json
 
 {
-    "name": "vanshv",
+    "name": "vanshvfinal",
     "company": "none",
     "address": "Kalka",
     "phone": 1234567890,
-    "email": "vanshvsa123@gmail.com",
-    "password": "vanshvsa123"
+    "email": "vanshvfinal@gmail.com",
+    "password": "password1"
 }
 
 ### User sign in endpoint
@@ -16,30 +16,26 @@ POST http://localhost:3001/v1/user/login
 Content-Type: application/json
 
 {
-    "email": "vanshvsa123@gmail.com",
-    "password": "idkmypassplease123"
+    "email": "vanshvfinal@gmail.com",
+    "password": "password2"
 }
 
 ### Get a user profile endpoint
 GET  http://localhost:3001/v1/user
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodmZpbmFsQGdtYWlsLmNvbSIsImlhdCI6MTcwMjIwMzY1MywiZXhwIjoxNzAyMjA0NTUzfQ.p5YLNf5wss-J01Sda53KdA4mmNpWSQgP0rZ785SM_yo
 
 ###Token routers
 
-### Get refreshed token
+### Get access token from refresh token
 GET http://localhost:3001/v1/tokens
-Authorization: ###Token routers
-
-### Get refreshed token
-GET http://localhost:3001/v1/tokens
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzA0NzEzODU1fQ.5oIEYTqYQ0u6UKicMjiuVbm8wswKRqkiCXf0p_NjDuw
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodmZpbmFsQGdtYWlsLmNvbSIsImlhdCI6MTcwMjIwMzY1MywiZXhwIjoxNzA0Nzk1NjUzfQ.Mp1gm28tkepKHLWepPZzU8kUaZvBbnMdMWR9loT5gEA
 
 #### Password reset request endpoints
 POST http://localhost:3001/v1/user/reset-password
 Content-Type: application/json 
 
 {
-    "email": "vanshvsa123@gmail.com"
+    "email": "vanshvfinal@gmail.com"
 }
 
 #### Update new password endpoint
@@ -47,10 +43,50 @@ PATCH http://localhost:3001/v1/user/reset-password
 Content-Type: application/json 
 
 {
-    "email": "vanshvsa123@gmail.com", 
-    "pin": 547399, 
-    "newPassword": "idkmypassplease123"
+    "email": "vanshvfinal@gmail.com", 
+    "pin": 682043, 
+    "newPassword": "password2"
 }
+
+### Ticket endpoints (don't work with 'REST Client' extension , use postman)
+
+### Open ticket endpoint
+POST http://localhost:3001/v1/ticket
+Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodmZpbmFsQGdtYWlsLmNvbSIsImlhdCI6MTcwMjIwNDI1OCwiZXhwIjoxNzAyMjA1MTU4fQ.bM92qKUQ-4bb4LsG09mXasFWItzG6hzMVNjSgPnUMBE"
+Content-Type: application/json
+
+{
+    "subject": "Fees Issue",
+    "sender": "vansh",
+    "message": "Fan not working, please fix as soon as possible"
+}
+
+### Get all tickets endpoint
+GET http://localhost:3001/v1/ticket
+Authorization: : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM"
+
+### Get a single ticket endpoint
+GET http://localhost:3001/v1/ticket/ticketid
+Authorization: : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM"
+
+### Add message to ticket endpoint
+PUT http://localhost:3001/v1/ticket/ticketid
+Authorization: : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM"
+Content-Type: application/json
+
+{
+    "message": "huh?!",
+    "sender": "admin A"
+}
+
+### Close ticket endpoint
+PATCH http://localhost:3001/v1/ticket/close-ticket/ticketid
+Authorization: : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM"
+
+### Delete ticket endpoint
+DELETE http://localhost:3001/v1/ticket/ticketid
+Authorization: : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNodnNhMTIzQGdtYWlsLmNvbSIsImlhdCI6MTcwMjEyMTg1NSwiZXhwIjoxNzAyMTIyNzU1fQ.sF0KcK0yAeiN1gnlOhoRx-WNmWtIGKwhUFX6-sRu8JM"
+
 
 //bugs
 
@@ -58,3 +94,6 @@ Content-Type: application/json
 //i can set this in mongosh wtih 
 //db.users.createIndex({email:1}, {unique:true})
 //need to do this everytime mongosh is opened
+
+//cannot use pins which start with 0, ex: 098765
+
