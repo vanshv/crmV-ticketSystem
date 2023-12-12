@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { PrivateRoute } from './components/private-route/PrivateRoute.comp';
 import { DefaultLayout } from './layout/DefaultLayout';
 import React from 'react';
+import { Registration } from './pages/registration/Registration.page';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Router>
         <Routes>
             <Route path="/" element={<Entry/>} />
+            <Route path="/registration" element={<Registration/>}/>
             <Route path="/dashboard/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
             <Route path="/add-ticket/" element={<PrivateRoute><AddTicket/></PrivateRoute>}/>
             <Route path="/tickets/" element={<PrivateRoute><TicketLists/></PrivateRoute>}/>
@@ -34,6 +36,4 @@ bugs:
 
 wrong password
 calling /dashboard from address bar
-ticket messages not loading
-UI looks bad
 */

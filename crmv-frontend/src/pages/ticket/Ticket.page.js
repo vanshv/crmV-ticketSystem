@@ -44,7 +44,7 @@ export const Ticket = () => {
                 </Col>
             </Row>
             <Row>
-                <Col className="text-weight-bolder text-secondary">
+                <Col className="mt-3 text-weight-bolder text-secondary">
                     <div className="subject">Subject: {selectedTicket.subject}</div>
                     <div className="date">
                         Ticket Opened:{" "}
@@ -53,7 +53,7 @@ export const Ticket = () => {
                     </div>
                     <div className="status">Status: {selectedTicket.status}</div>
                 </Col>
-                <Col className='text-right'>
+                <Col className='mt-4 text-right'>
                     <Button
                         variant="outline-info"
                         onClick={() => dispatch(closeTicket(tId))}
@@ -62,7 +62,7 @@ export const Ticket = () => {
                     </Button>
                 </Col>
             </Row>
-            <Row className='mt-4'>
+            <Row>
                 <Col></Col>
                 <Col>
                 {selectedTicket.conversations && 

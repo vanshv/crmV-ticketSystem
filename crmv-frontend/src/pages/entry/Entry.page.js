@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {LoginForm} from "../../components/login/login.comp.js";
+import { LoginForm } from "../../components/login/login.comp.js";
 import "./entry.style.css";
 import { Container } from "react-bootstrap";
 import { ResetPassword } from "../../components/password reset/PasswordReset.comp.js";
@@ -18,14 +18,11 @@ export const Entry = () => {
     }
 
     return <div className="entry-page bg-info">
-        <Container className="container-fluid bg-light p-5 form-box">
+        <Container className='form-box' style={{ maxWidth: '500px' }}>
             {frmLoad === "login" && <LoginForm formSwitcher={formSwitcher}/>}
-
             {frmLoad === 'Reset' && <ResetPassword 
-                // handleOnChange={handleOnChange}
                 handleOnResetSubmit={handleOnResetSubmit}
                 formSwitcher={formSwitcher}
-                // email={email}
             />}
         </Container>
     </div>;

@@ -1,14 +1,13 @@
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../assets/img/logo.jpg'
+import logo from '../../assets/img/logo192.png'
 import { useNavigate, useHistory } from 'react-router-dom';
 import { LinkContainer } from "react-router-bootstrap";
 import { userLogout } from "../../api/userApi";
 
 export const Header = () => {
     const navigate = useNavigate();
-
     const logMeOut = () =>{
         userLogout();
         sessionStorage.removeItem("accessJWT");
@@ -23,6 +22,7 @@ export const Header = () => {
         bg="info"
         variant="dark"
         expand="md"
+        
     >
         <Navbar.Brand>
             <img src={logo} alt="logo" width="100px"/>
@@ -30,9 +30,9 @@ export const Header = () => {
         <Navbar.Toggle
         aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
+            <Nav >
                 <LinkContainer to='/dashboard'>
-                    <Nav.Link>Dashboard</Nav.Link>
+                    <Nav.Link color="red">Dashboard</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/tickets'>
                     <Nav.Link>Tickets</Nav.Link>

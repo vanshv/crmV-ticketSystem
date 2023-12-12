@@ -65,11 +65,11 @@ export const LoginForm = ({formSwitcher}) => {
         <Container>
             <Row>
                 <Col>
-                    <h1 className="text-info text-center">Client Login</h1>
+                    <h1 className="text-center text-info">Client Login</h1>
                     <hr/>
                     {/* {error && <Alert variant="danger">{error}</Alert>} */}
-                    <Form autoComplete="off" onSubmit={handleOnSubmit}>
-                        <Form.Group>
+                    <Form onSubmit={handleOnSubmit}>
+                        <Form.Group className='mb-3'>
                             <Form.Label>Email Address</Form.Label>
                             <Form.Control 
                             type="email"
@@ -80,7 +80,7 @@ export const LoginForm = ({formSwitcher}) => {
                             required
                             />
                         </Form.Group>
-                        <Form.Group>
+                        <Form.Group className='mb-3'> 
                             <Form.Label>Password</Form.Label>
                             <Form.Control 
                             type="password"
@@ -102,6 +102,11 @@ export const LoginForm = ({formSwitcher}) => {
                 <Col>
                     <a href="#!" onClick={() => formSwitcher("Reset")}>Forgot Password?</a>
                 </Col>
+            </Row>
+            <Row className="py-4">
+              <Col>
+                Are you new here? <a href="/registration">Register Now</a>
+              </Col>
             </Row>
         </Container>
     );

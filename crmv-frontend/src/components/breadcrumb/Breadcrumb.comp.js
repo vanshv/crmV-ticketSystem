@@ -4,9 +4,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 export const PageBreadcrumb = ({page}) =>{
     return (
-        <Breadcrumb>
+        <Breadcrumb className='mt-3 navbar navbar-light bg-light'>
           <LinkContainer to="/">
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item >Home</Breadcrumb.Item>
           </LinkContainer>
           <Breadcrumb.Item active>{page}</Breadcrumb.Item>
         </Breadcrumb>

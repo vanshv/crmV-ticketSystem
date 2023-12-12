@@ -4,7 +4,7 @@ import {Container, Row, Col, Button} from 'react-bootstrap'
 import {TicketTable} from '../../components/ticket-table/TicketTable.comp';
 import tickets from '../../assets/data/dummy-tickets.json'
 import {PageBreadcrumb} from '../../components/breadcrumb/Breadcrumb.comp';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import { fetchAllTickets } from "../ticket-list/ticketsAction";
 
 export const Dashboard = () =>{
@@ -25,12 +25,13 @@ export const Dashboard = () =>{
                 <PageBreadcrumb page="Dashboard"/>    
             </Row>
             <Row>
-                <Col className="text-center mt-5 mb-2">
+                <Col className="text-center mt-4 mb-2">
                     <Link to="/add-ticket">
-                        <Button variant="info" 
+                        <Button variant="info" text
                         style={{
                             'fontSize':'2rem', 
-                            padding: '10px 30px'
+                            padding: '10px 30px',
+                            color: "white"
                         }}>
                             Add New Ticket
                         </Button>
@@ -38,13 +39,13 @@ export const Dashboard = () =>{
                 </Col>
             </Row>
             <Row>
-                <Col className="text-center mb-2">
+                <Col className="text-center">
                     <div>Total tickets: {totlatTickets}</div>
                     <div>Pending tickets: {pendingTickets.length}</div>
                 </Col>
             </Row>
             <Row>
-                <Col className="mt-2">
+                <Col className="mt-4">
                     Recently added tickets
                 </Col>
             </Row>

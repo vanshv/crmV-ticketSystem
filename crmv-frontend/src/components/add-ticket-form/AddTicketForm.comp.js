@@ -71,7 +71,7 @@ const initialFrmError = {
     };
     
     return (
-        <Container className="mt-3 add-new-tickets bg-light">
+        <Container className="form-box mt-3" style={{ maxWidth: '750px' }}>
             <h1 className='text-info text-center'>Add New Ticket</h1>
             <hr/>
             <div>
@@ -113,18 +113,18 @@ const initialFrmError = {
                     </Col>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Issue</Form.Label>
+                    <Form.Label column sm={3}>Issue</Form.Label>
                     <Form.Control 
                     as="textarea"
                     name="message"
                     value={frmData.message}
-                    rows="15"
+                    rows="10"
                     onChange={handleOnChange}
                     placeholder="Enter Issue"
                     required
                     />
                 </Form.Group>
-                <Button type="submit" variant="info" block>
+                <Button type="submit" variant="info" block className='mt-2'>
                     Open Ticket
                 </Button>
             </Form>

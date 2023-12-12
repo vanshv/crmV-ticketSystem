@@ -11,8 +11,12 @@
 }
 
 .message{
-    padding: 1rem;
-    width: 80%;
-    border: 1px solid #ced4dc;
-    border-radius: 0.25rem;
+    padding: 1.5rem;
+    width: 100%;
+    border: 3px solid #ced4df;
+    border-radius: 0.8rem;
+    background-color: #e6ebf0;
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
 }

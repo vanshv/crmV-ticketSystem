@@ -30,14 +30,11 @@ export const UpdateTicket = ({ _id }) => {
         <div>
         <Form onSubmit={handleOnSubmit}>
           <Form.Label>Reply</Form.Label>
-          <Form.Text>
-            Please reply your message here or update the ticket
-          </Form.Text>
           <Form.Control
             value={message}
             onChange={handleOnChange}
             as="textarea"
-            row="5"
+            rows="5"
             name="detail"
           />
           <div className="text-right mt-3 mb-3">
