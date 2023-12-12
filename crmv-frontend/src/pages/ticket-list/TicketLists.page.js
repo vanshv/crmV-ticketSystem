@@ -7,8 +7,6 @@ import { SearchForm } from '../../components/search-form/SearchForm.comp'
 import { TicketTable } from '../../components/ticket-table/TicketTable.comp'
 import { Link } from 'react-router-dom';
 
-
-
 export const TicketLists = () => {
     const dispatch = useDispatch();
 

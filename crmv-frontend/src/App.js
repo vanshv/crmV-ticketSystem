@@ -34,4 +34,6 @@ bugs:
 
 wrong password
 calling /dashboard from address bar
+ticket messages not loading
+UI looks bad
 */

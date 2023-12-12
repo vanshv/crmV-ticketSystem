@@ -5,20 +5,26 @@ import {MessageHistory} from '../../components/message-history/MessageHistory.co
 import {UpdateTicket} from '../../components/update-ticket/UpdateTicket.comp';
 import {useParams} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleTicket } from '../ticket-list/ticketsAction';
+import { fetchSingleTicket , closeTicket} from '../ticket-list/ticketsAction';
+import { resetResponseMsg } from "../ticket-list/ticketsSlice";
 
 export const Ticket = () => {
     const {tId} = useParams();
     const dispatch = useDispatch();
-    const { isLoading, error, selectedTicket } = useSelector(
-      (state) => state.tickets
-    );
-    const [message, setMessage] = useState("");
-    const [ticket, setTicket] = useState("");
+    const {
+        isLoading,
+        error,
+        selectedTicket,
+        replyMsg,
+        replyTicketError,
+    } = useSelector((state) => state.tickets);
 
     useEffect(() => {
         dispatch(fetchSingleTicket(tId));
-    }, [message, tId, dispatch]);
+        return () => {
+            (replyMsg || replyTicketError) && dispatch(resetResponseMsg());
+          };
+    }, [tId, dispatch, replyMsg, replyTicketError]);
 
     return (
         <Container>
@@ -31,6 +37,10 @@ export const Ticket = () => {
                 <Col>
                     {isLoading && <Spinner variant="primary" animation="border" />}
                     {error && <Alert variant="danger">{error}</Alert>}
+                    {replyTicketError && (
+                        <Alert variant="danger">{replyTicketError}</Alert>
+                    )}
+                    {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
                 </Col>
             </Row>
             <Row>
@@ -44,14 +54,19 @@ export const Ticket = () => {
                     <div className="status">Status: {selectedTicket.status}</div>
                 </Col>
                 <Col className='text-right'>
-                    <Button variant='outline-info'>Close Ticket</Button> 
+                    <Button
+                        variant="outline-info"
+                        onClick={() => dispatch(closeTicket(tId))}
+                        disabled={selectedTicket.status === "Closed"}>
+                        Close Ticket
+                    </Button>
                 </Col>
             </Row>
             <Row className='mt-4'>
                 <Col></Col>
                 <Col>
                 {selectedTicket.conversations && 
-                <MessageHistory msg={selectedTicket.converstaions}/>}
+                <MessageHistory msg={selectedTicket.conversations}/>}
                 </Col>
             </Row>
             <hr/>
