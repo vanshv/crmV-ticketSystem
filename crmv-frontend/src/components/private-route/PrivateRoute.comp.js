@@ -1,19 +1,33 @@
-import React from 'react';
-import {Route, Navigate} from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {Route, Navigate, Redirect, Routes} from 'react-router-dom';
 import { DefaultLayout } from '../../layout/DefaultLayout';
+import { loginSuccess } from "../login/loginSlice";
+import { fetchNewAccessJWT } from "../../api/userApi";
+import { getUserProfile } from "../../pages/dashboard/userAction";
 
-const isAuth = true;
-// to implement when backend is done
 export const PrivateRoute = ({children, ...rest}) => {
-    console.log(children, isAuth);
-    return (
-        <Route
-            {...rest}
-            render={() =>
-                isAuth ? 
-                    <DefaultLayout>{children}</DefaultLayout> : 
-                    <Navigate to="/"/>
-            }
-        />  
-    );
+    const dispatch = useDispatch();
+    const { isAuth } = useSelector((state) => state.login);
+    const { user } = useSelector((state) => state.user);
+
+    useEffect(() => {
+      const updateAccessJWT = async () => {
+        const result = await fetchNewAccessJWT();
+        result && dispatch(loginSuccess());
+      };
+
+      !user._id && dispatch(getUserProfile());
+
+      !sessionStorage.getItem("accessJWT") &&
+      localStorage.getItem("crmSite") &&
+      updateAccessJWT();
+
+      !isAuth && sessionStorage.getItem("accessJWT") && dispatch(loginSuccess());
+    }, [dispatch, isAuth, user._id]);
+
+    if(!isAuth){
+        return <Navigate to='/'/>;
+    }
+    return <DefaultLayout>{children}</DefaultLayout>;
 };

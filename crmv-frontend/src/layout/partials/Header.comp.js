@@ -2,14 +2,19 @@ import React from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../../assets/img/logo.jpg'
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useHistory } from 'react-router-dom';
 import { LinkContainer } from "react-router-bootstrap";
+import { userLogout } from "../../api/userApi";
 
 export const Header = () => {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const logMeOut = () =>{
-        history.push('/');
+        userLogout();
+        sessionStorage.removeItem("accessJWT");
+        localStorage.removeItem("crmSite");
+        console.log('before bug');
+        navigate('/');
     };
 
     return (
