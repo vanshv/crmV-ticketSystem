@@ -14,7 +14,7 @@ export const Dashboard = () =>{
             </Row>
             <Row>
                 <Col className="text-center mt-5 mb-2">
-                    <Link to='add-ticket'>
+                    <Link to="/add-ticket">
                         <Button variant="info" 
                         style={{
                             'fontSize':'2rem', 
@@ -26,7 +26,7 @@ export const Dashboard = () =>{
                 </Col>
             </Row>
             <Row>
-                <Col className="text-center mt-5 mb-2">
+                <Col className="text-center mb-2">
                     <div>Total tickets: 50</div>
                     <div>Pending tickets: 5</div>
                 </Col>
