@@ -1,5 +1,5 @@
 ---
-- name: Pull Frontend and Backend Docker Images
+- name: run it all idk
   hosts: localhost
   vars:
     ansible_python_interpreter: /usr/bin/python3
@@ -12,11 +12,9 @@
       docker_image:
         name: vanshv/backend-crm:latest
         source: pull
-
-# - name: Stop docker compose
-#   shell: sudo docker compose down
-
-- name: Get All Images and Build
-  shell: sudo docker compose build
-- name: Run Services
-  shell: sudo docker compose up -d
+    - name: Stop docker compose
+      command: sudo docker compose down
+    - name: Get All Images and Build
+      command: sudo docker compose build
+    - name: Run Services
+      command: sudo docker compose up -d
