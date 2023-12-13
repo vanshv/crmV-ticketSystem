@@ -14,9 +14,9 @@
         source: pull
 
 - name: Stop docker compose
-  command: docker compose down
+  shell: docker compose down
 
 - name: Get All Images and Build
-  command: docker compose build
+  shell: docker compose build
 - name: Run Services
-  command: docker compose up -d
+  shell: docker compose up -d
