@@ -3,7 +3,7 @@ version: "3"
 services:
   backend:
     # build: ./client-api
-    image: vanshv/backend
+    image: vanshv/backend-crm
     ports:
       - "3001:3001"
     environment:
@@ -18,7 +18,7 @@ services:
 
   frontend:
     # build: ./crmv-frontend
-    image: vanshv/frontend
+    image: vanshv/frontend-crm
     ports:
       - "3000:3000"
     depends_on:
