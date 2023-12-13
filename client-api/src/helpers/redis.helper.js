@@ -1,8 +1,11 @@
 const redis = require("redis");
 const client = redis.createClient(process.env.REDIS_URL);
 
-client.on("error", function (error) {
-  console.error(error);
+client.on('open', () =>{
+  console.log('redis is connected');
+});
+client.on('error', (error) => {
+    console.log(error);
 });
 
 const setJWT = (key, value) => {

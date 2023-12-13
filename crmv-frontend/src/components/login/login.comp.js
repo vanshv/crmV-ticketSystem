@@ -17,8 +17,8 @@ export const LoginForm = ({formSwitcher}) => {
       sessionStorage.getItem("accessJWT") && navigate("/dashboard");
     }, [navigate, isAuth]);
 
-    const [email, setEmail] = useState("vanshvfinal@gmail.com");
-    const [password, setPassword] = useState("password2");
+    const [email, setEmail] = useState("singhvanshvardhan8@gmail.com");
+    const [password, setPassword] = useState("hello123");
   
     const handleOnChange = (e) => {
       const { name, value } = e.target;
