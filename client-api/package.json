@@ -4,8 +4,8 @@
   "description": "API for crmv client side",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "test": "mocha test"
+    "start": "NODE_ENV=prod node app.js",
+    "test": "NODE_ENV=test mocha"
   },
   "author": "vanshv",
   "license": "ISC",

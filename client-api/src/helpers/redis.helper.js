@@ -1,5 +1,13 @@
 const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_URL);
+
+const { config } = require('../../config');
+
+const env = process.env.NODE_ENV;
+console.log(env);
+const redisUrl = config[env].redisUrl;
+console.log(redisUrl);
+
+const client = redis.createClient(redisUrl);
 
 client.on('open', () => {
   console.log('redis is connected');
