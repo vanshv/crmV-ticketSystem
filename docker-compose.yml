@@ -12,6 +12,7 @@ services:
     #   JWT_ACCESS_SECRET: helloredis1232fhowe
     #   JWT_REFRESH_SECRET: hellodbf428rq9j
     #   JWT_REFRESH_SECRET_EXP_DAY: 30
+    # hello ji
     depends_on:
       - mongo_db
       - redis_cache
