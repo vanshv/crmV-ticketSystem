@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   tickets: [],
   isLoading: false,
-  error: "",
+  error: '',
   searchTicketList: [],
   selectedTicket: {},
-  replyMsg: "",
-  replyTicketError: "",
+  replyMsg: '',
+  replyTicketError: '',
 };
 
 const ticketListSlice = createSlice({
-  name: "ticketList",
+  name: 'ticketList',
   initialState,
   reducers: {
     fetchTicketLoading: (state) => {
@@ -39,7 +39,7 @@ const ticketListSlice = createSlice({
     fetchSingleTicketSuccess: (state, { payload }) => {
       state.selectedTicket = payload;
       state.isLoading = false;
-      state.error = "";
+      state.error = '';
     },
     fetchSingleTicketFail: (state, { payload }) => {
       state.isLoading = false;
@@ -50,7 +50,7 @@ const ticketListSlice = createSlice({
     },
     replyTicketSuccess: (state, { payload }) => {
       state.isLoading = false;
-      state.error = "";
+      state.error = '';
       state.replyMsg = payload;
     },
     replyTicketFail: (state, { payload }) => {
@@ -62,7 +62,7 @@ const ticketListSlice = createSlice({
     },
     closeTicketSuccess: (state, { payload }) => {
       state.isLoading = false;
-      state.error = "";
+      state.error = '';
       state.replyMsg = payload;
     },
     closeTicketFail: (state, { payload }) => {
@@ -71,8 +71,8 @@ const ticketListSlice = createSlice({
     },
     resetResponseMsg: (state) => {
       state.isLoading = false;
-      state.replyTicketError = "";
-      state.replyMsg = "";
+      state.replyTicketError = '';
+      state.replyMsg = '';
     },
   },
 });

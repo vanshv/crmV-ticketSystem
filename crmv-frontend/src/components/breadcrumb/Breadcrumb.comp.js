@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { LinkContainer } from 'react-router-bootstrap';
 
-export const PageBreadcrumb = ({page}) =>{
-    return (
-        <Breadcrumb className='mt-3 navbar navbar-light bg-light'>
-          <LinkContainer to="/">
-            <Breadcrumb.Item >Home</Breadcrumb.Item>
-          </LinkContainer>
-          <Breadcrumb.Item active>{page}</Breadcrumb.Item>
-        </Breadcrumb>
-      );
-}
+export const PageBreadcrumb = ({ page }) => {
+  return (
+    <Breadcrumb className="mt-3 navbar navbar-light bg-light">
+      <LinkContainer to="/">
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+      </LinkContainer>
+      <Breadcrumb.Item active>{page}</Breadcrumb.Item>
+    </Breadcrumb>
+  );
+};

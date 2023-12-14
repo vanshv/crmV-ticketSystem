@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
-    Container,
-    Row,
-    Col,
-    Form,
-    Button,
-    Spinner,
-    Alert,
-  } from "react-bootstrap";
-  import { newUserRegistration } from "./userRegAction";
-  import { useDispatch, useSelector } from "react-redux";
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Spinner,
+  Alert,
+} from 'react-bootstrap';
+import { newUserRegistration } from './userRegAction';
+import { useDispatch, useSelector } from 'react-redux';
 
-  const initialState = {
-    name: "",
-    phone: "",
-    email: "",
-    company: "",
-    address: "",
-    password: "",
-    confirmPass: "",
-  };
+const initialState = {
+  name: '',
+  phone: '',
+  email: '',
+  company: '',
+  address: '',
+  password: '',
+  confirmPass: '',
+};
 const passVerificationError = {
   isLenthy: false,
   confirmPass: false,
@@ -41,7 +41,7 @@ const RegistrationForm = () => {
 
     setNewUser({ ...newUser, [name]: value });
 
-    if (name === "password") {
+    if (name === 'password') {
       const isLenthy = value.length > 3;
 
       setPasswordError({
@@ -50,10 +50,10 @@ const RegistrationForm = () => {
       });
     }
 
-    if (name === "confirmPass") {
+    if (name === 'confirmPass') {
       setPasswordError({
         ...passwordError,
-        confirmPass: (newUser.password === value),
+        confirmPass: newUser.password === value,
       });
     }
   };
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
       <Row>
         <Col>
           {message && (
-            <Alert variant={status === "success" ? "success" : "danger"}>
+            <Alert variant={status === 'success' ? 'success' : 'danger'}>
               {message}
             </Alert>
           )}
@@ -84,101 +84,115 @@ const RegistrationForm = () => {
         <Col>
           <Form onSubmit={handleOnSubmit}>
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Name</Form.Label>
+              <Form.Label column sm={2}>
+                Name
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="text"
-                name="name"
-                value={newUser.name}
-                onChange={handleOnChange}
-                placeholder="Your name"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={newUser.name}
+                  onChange={handleOnChange}
+                  placeholder="Your name"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Phone</Form.Label>
+              <Form.Label column sm={2}>
+                Phone
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="number"
-                name="phone"
-                value={newUser.phone}
-                onChange={handleOnChange}
-                placeholder="Phone"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="number"
+                  name="phone"
+                  value={newUser.phone}
+                  onChange={handleOnChange}
+                  placeholder="Phone"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>E-mail</Form.Label>
+              <Form.Label column sm={2}>
+                E-mail
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="email"
-                name="email"
-                value={newUser.email}
-                onChange={handleOnChange}
-                placeholder="Enter email"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={newUser.email}
+                  onChange={handleOnChange}
+                  placeholder="Enter email"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Company</Form.Label>
+              <Form.Label column sm={2}>
+                Company
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="text"
-                name="company"
-                value={newUser.company}
-                onChange={handleOnChange}
-                placeholder="Company name"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="text"
+                  name="company"
+                  value={newUser.company}
+                  onChange={handleOnChange}
+                  placeholder="Company name"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Address</Form.Label>
+              <Form.Label column sm={2}>
+                Address
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="text"
-                name="address"
-                value={newUser.address}
-                onChange={handleOnChange}
-                placeholder="Full address"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="text"
+                  name="address"
+                  value={newUser.address}
+                  onChange={handleOnChange}
+                  placeholder="Full address"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Password</Form.Label>
+              <Form.Label column sm={2}>
+                Password
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="password"
-                name="password"
-                value={newUser.password}
-                onChange={handleOnChange}
-                placeholder="Password"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={newUser.password}
+                  onChange={handleOnChange}
+                  placeholder="Password"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Group as={Row} className="mb-3">
-              <Form.Label column sm={2}>Confim Password</Form.Label>
+              <Form.Label column sm={2}>
+                Confim Password
+              </Form.Label>
               <Col sm={10}>
-              <Form.Control
-                type="password"
-                name="confirmPass"
-                value={newUser.confirmPass}
-                onChange={handleOnChange}
-                placeholder="Confirm Password"
-                required
-              />
-            </Col>
+                <Form.Control
+                  type="password"
+                  name="confirmPass"
+                  value={newUser.confirmPass}
+                  onChange={handleOnChange}
+                  placeholder="Confirm Password"
+                  required
+                />
+              </Col>
             </Form.Group>
 
             <Form.Text>
@@ -190,7 +204,7 @@ const RegistrationForm = () => {
             <ul className="mb-4">
               <li
                 className={
-                  passwordError.isLenthy ? "text-success" : "text-danger"
+                  passwordError.isLenthy ? 'text-success' : 'text-danger'
                 }
               >
                 Min 8 characters

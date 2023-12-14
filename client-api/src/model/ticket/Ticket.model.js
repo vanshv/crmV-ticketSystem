@@ -1,4 +1,4 @@
-const { TicketSchema } = require("./Ticket.schema");
+const { TicketSchema } = require('./Ticket.schema');
 
 const insertTicket = (ticketObj) => {
   return new Promise((resolve, reject) => {
@@ -43,7 +43,7 @@ const updateClientReply = ({ _id, message, sender }) => {
       TicketSchema.findOneAndUpdate(
         { _id },
         {
-          status: "Pending operator response",
+          status: 'Pending operator response',
           $push: {
             conversations: { message, sender },
           },
@@ -64,7 +64,7 @@ const updateStatusClose = ({ _id, clientId }) => {
       TicketSchema.findOneAndUpdate(
         { _id, clientId },
         {
-          status: "Closed",
+          status: 'Closed',
         },
         { new: true }
       )

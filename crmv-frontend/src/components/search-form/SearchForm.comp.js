@@ -1,8 +1,8 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { filterSerachTicket } from "../../pages/ticket-list/ticketsAction";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { filterSerachTicket } from '../../pages/ticket-list/ticketsAction';
 
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col } from 'react-bootstrap';
 
 export const SearchForm = () => {
   const dispatch = useDispatch();

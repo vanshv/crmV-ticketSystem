@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: false,
-  status: "",
-  message: "",
+  status: '',
+  message: '',
 };
 
 const userRegestrationSlice = createSlice({
-  name: "userRegistration",
+  name: 'userRegistration',
   initialState,
   reducers: {
     registrationPending: (state) => {
@@ -15,12 +15,12 @@ const userRegestrationSlice = createSlice({
     },
     registrationSuccess: (state, { payload }) => {
       state.isLoading = false;
-      state.status = "success";
+      state.status = 'success';
       state.message = payload;
     },
     registrationError: (state, { payload }) => {
       state.isLoading = false;
-      state.status = "error";
+      state.status = 'error';
       state.message = payload;
     },
   },
@@ -28,10 +28,7 @@ const userRegestrationSlice = createSlice({
 
 const { reducer, actions } = userRegestrationSlice;
 
-export const {
-  registrationPending,
-  registrationSuccess,
-  registrationError,
-} = actions;
+export const { registrationPending, registrationSuccess, registrationError } =
+  actions;
 
 export default reducer;

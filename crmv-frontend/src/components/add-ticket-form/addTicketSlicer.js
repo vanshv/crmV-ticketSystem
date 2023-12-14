@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: false,
-  error: "",
-  successMsg: "",
+  error: '',
+  successMsg: '',
 };
 
 const newTicketSlice = createSlice({
-  name: "newTicket",
+  name: 'newTicket',
   initialState,
   reducers: {
     openNewTicketPending: (state) => {
@@ -22,8 +22,8 @@ const newTicketSlice = createSlice({
       state.error = payload;
     },
     restSuccessMSg: (state) => {
-        state.isLoading = true;
-        state.successMsg = "";
+      state.isLoading = true;
+      state.successMsg = '';
     },
   },
 });

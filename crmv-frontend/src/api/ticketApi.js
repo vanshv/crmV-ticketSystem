@@ -1,15 +1,15 @@
-import axios from "axios";
+import axios from 'axios';
 
-const rootUrl = "http://localhost:3001/v1/";
-const closeTicketUrl = rootUrl + "ticket/close-ticket/";
-const ticketUlr = rootUrl + "ticket/";
+const rootUrl = 'http://localhost:3001/v1/';
+const closeTicketUrl = rootUrl + 'ticket/close-ticket/';
+const ticketUlr = rootUrl + 'ticket/';
 
 export const getAllTickets = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.get("http://localhost:3001/v1/ticket", {
+      const result = await axios.get('http://localhost:3001/v1/ticket', {
         headers: {
-          Authorization: sessionStorage.getItem("accessJWT"),
+          Authorization: sessionStorage.getItem('accessJWT'),
         },
       });
 
@@ -25,7 +25,7 @@ export const getSingleTicket = (_id) => {
     try {
       const result = await axios.get(ticketUlr + _id, {
         headers: {
-          Authorization: sessionStorage.getItem("accessJWT"),
+          Authorization: sessionStorage.getItem('accessJWT'),
         },
       });
 
@@ -42,7 +42,7 @@ export const updateReplyTicket = (_id, msgObj) => {
     try {
       const result = await axios.put(ticketUlr + _id, msgObj, {
         headers: {
-          Authorization: sessionStorage.getItem("accessJWT"),
+          Authorization: sessionStorage.getItem('accessJWT'),
         },
       });
 
@@ -62,7 +62,7 @@ export const updateTicketStatusClosed = (_id) => {
         {},
         {
           headers: {
-            Authorization: sessionStorage.getItem("accessJWT"),
+            Authorization: sessionStorage.getItem('accessJWT'),
           },
         }
       );
@@ -76,12 +76,12 @@ export const updateTicketStatusClosed = (_id) => {
 };
 
 export const createNewTicket = (frmData) => {
-  console.log("from api", frmData);
+  console.log('from api', frmData);
   return new Promise(async (resolve, reject) => {
     try {
       const result = await axios.post(ticketUlr, frmData, {
         headers: {
-          Authorization: sessionStorage.getItem("accessJWT"),
+          Authorization: sessionStorage.getItem('accessJWT'),
         },
       });
 

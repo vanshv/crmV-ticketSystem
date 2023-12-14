@@ -1,9 +1,9 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
-import RegistrationForm from "../../components/registration-form/RegistrationForm.comp";
+import RegistrationForm from '../../components/registration-form/RegistrationForm.comp';
 
-import "./registration.style.css";
+import './registration.style.css';
 
 export const Registration = () => {
   return (

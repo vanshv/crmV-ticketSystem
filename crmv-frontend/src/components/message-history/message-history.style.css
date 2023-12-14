@@ -1,22 +1,22 @@
 .message-history {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.message-history:nth-child(even){
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+.message-history:nth-child(even) {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
-.message{
-    padding: 1.5rem;
-    width: 100%;
-    border: 3px solid #ced4df;
-    border-radius: 0.8rem;
-    background-color: #e6ebf0;
-    margin-top: 2%;
-    margin-left: 2%;
-    margin-right: 2%;
+.message {
+  padding: 1.5rem;
+  width: 100%;
+  border: 3px solid #ced4df;
+  border-radius: 0.8rem;
+  background-color: #e6ebf0;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
 }

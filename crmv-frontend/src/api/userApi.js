@@ -1,10 +1,10 @@
-import axios from "axios";
+import axios from 'axios';
 
-const rootUrl = "http://localhost:3001/v1/";
-const loginUrl = rootUrl + "user/login";
-const userProfileUrl = rootUrl + "user";
-const logoutUrl = rootUrl + "user/logout";
-const newAccessJWT = rootUrl + "tokens";
+const rootUrl = 'http://localhost:3001/v1/';
+const loginUrl = rootUrl + 'user/login';
+const userProfileUrl = rootUrl + 'user';
+const logoutUrl = rootUrl + 'user/logout';
+const newAccessJWT = rootUrl + 'tokens';
 
 export const userLogin = (frmData) => {
   return new Promise(async (resolve, reject) => {
@@ -13,10 +13,10 @@ export const userLogin = (frmData) => {
 
       resolve(res.data);
 
-      if (res.data.status === "success") {
-        sessionStorage.setItem("accessJWT", res.data.accessJWT);
+      if (res.data.status === 'success') {
+        sessionStorage.setItem('accessJWT', res.data.accessJWT);
         localStorage.setItem(
-          "crmSite",
+          'crmSite',
           JSON.stringify({ refreshJWT: res.data.refreshJWT })
         );
       }
@@ -29,10 +29,10 @@ export const userLogin = (frmData) => {
 export const fetchUser = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const accessJWT = sessionStorage.getItem("accessJWT");
+      const accessJWT = sessionStorage.getItem('accessJWT');
 
       if (!accessJWT) {
-        reject("Token not found!");
+        reject('Token not found!');
       }
 
       const res = await axios.get(userProfileUrl, {
@@ -52,10 +52,10 @@ export const fetchUser = () => {
 export const fetchNewAccessJWT = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const { refreshJWT } = JSON.parse(localStorage.getItem("crmSite"));
+      const { refreshJWT } = JSON.parse(localStorage.getItem('crmSite'));
 
       if (!refreshJWT) {
-        reject("Token not found!");
+        reject('Token not found!');
       }
 
       const res = await axios.get(newAccessJWT, {
@@ -64,14 +64,14 @@ export const fetchNewAccessJWT = () => {
         },
       });
 
-      if (res.data.status === "success") {
-        sessionStorage.setItem("accessJWT", res.data.accessJWT);
+      if (res.data.status === 'success') {
+        sessionStorage.setItem('accessJWT', res.data.accessJWT);
       }
 
       resolve(true);
     } catch (error) {
-      if (error.message === "Request failed with status code 403") {
-        localStorage.removeItem("crmSite");
+      if (error.message === 'Request failed with status code 403') {
+        localStorage.removeItem('crmSite');
       }
 
       reject(false);
@@ -81,10 +81,10 @@ export const fetchNewAccessJWT = () => {
 
 export const userLogout = async () => {
   try {
-    console.log(sessionStorage.getItem("accessJWT"));
+    console.log(sessionStorage.getItem('accessJWT'));
     await axios.delete(logoutUrl, {
       headers: {
-        Authorization: sessionStorage.getItem("accessJWT"),
+        Authorization: sessionStorage.getItem('accessJWT'),
       },
     });
   } catch (error) {
@@ -99,7 +99,7 @@ export const userRegistration = (frmData) => {
 
       resolve(res.data);
 
-      if (res.data.status === "success") {
+      if (res.data.status === 'success') {
         resolve(res.data);
       }
     } catch (error) {

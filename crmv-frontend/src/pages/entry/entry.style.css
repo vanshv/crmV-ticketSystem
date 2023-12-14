@@ -1,12 +1,12 @@
 .entry-page {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-box {
-    box-shadow: 0px 0px 1000px px white;
-    padding: 40px;
-    background: white;
+  box-shadow: 0px 0px 1000px px white;
+  padding: 40px;
+  background: white;
 }

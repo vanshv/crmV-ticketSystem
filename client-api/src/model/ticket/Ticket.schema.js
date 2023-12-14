@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const TicketSchema = new Schema({
@@ -9,7 +9,7 @@ const TicketSchema = new Schema({
     type: String,
     maxlength: 100,
     required: true,
-    default: "",
+    default: '',
   },
   openAt: {
     type: Date,
@@ -20,7 +20,7 @@ const TicketSchema = new Schema({
     type: String,
     maxlength: 30,
     required: true,
-    default: "Pending operator response",
+    default: 'Pending operator response',
   },
 
   conversations: [
@@ -29,13 +29,13 @@ const TicketSchema = new Schema({
         type: String,
         maxlength: 50,
         required: true,
-        default: "",
+        default: '',
       },
       message: {
         type: String,
         maxlength: 1000,
         required: true,
-        default: "",
+        default: '',
       },
       msgAt: {
         type: Date,
@@ -47,5 +47,5 @@ const TicketSchema = new Schema({
 });
 
 module.exports = {
-  TicketSchema: mongoose.model("Ticket", TicketSchema),
+  TicketSchema: mongoose.model('Ticket', TicketSchema),
 };

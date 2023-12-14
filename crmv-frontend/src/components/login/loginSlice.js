@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: false,
   isAuth: false,
-  error: "",
+  error: '',
 };
 
 const loginSlice = createSlice({
-  name: "login",
+  name: 'login',
   initialState,
   reducers: {
     loginPending: (state) => {
@@ -16,7 +16,7 @@ const loginSlice = createSlice({
     loginSuccess: (state) => {
       state.isLoading = false;
       state.isAuth = true;
-      state.error = "";
+      state.error = '';
     },
     loginFail: (state, { payload }) => {
       state.isLoading = false;

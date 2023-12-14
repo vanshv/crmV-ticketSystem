@@ -69,3 +69,5 @@ app.use((error, req, res, next) =>{
 app.listen(port, () => {
     console.log(`API is ready on http://localhost:${port}`);
 });
+
+module.exports = app
