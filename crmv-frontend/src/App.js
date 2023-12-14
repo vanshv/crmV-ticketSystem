@@ -57,10 +57,3 @@ function App() {
 }
 
 export default App;
-
-/*
-bugs: 
-
-wrong password
-calling /dashboard from address bar
-*/
