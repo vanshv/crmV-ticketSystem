@@ -5,25 +5,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const helmet = require("helmet");
 const morgan = require("morgan");
 const port = process.env.PORT || 3001;
-
-//API security
-// app.use(helmet());
 
 //handle CORS error
 app.use(cors());
 
 //MongoDB Connection Setup
 const mongoose = require('mongoose');
-
-// mongoose.connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//     useCreateIndex: true,
-// });
 mongoose.connect(process.env.MONGO_URL);
 
 if(process.env.NODE_ENV !== 'production'){
