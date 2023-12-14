@@ -1,9 +1,7 @@
 const { config } = require('./config');
 
 const env = process.env.NODE_ENV;
-console.log(env);
 const mongoUrl= config[env].mongoUrl;
-console.log(mongoUrl);
 //makes all the .env variables available in process.env
 
 const express = require("express");
