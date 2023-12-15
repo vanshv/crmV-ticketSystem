@@ -4,16 +4,16 @@
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Pull frontend image
-      docker_image:
-        name: vanshv/frontend-crm:latest
-        source: pull
-    - name: Pull backend image
-      docker_image:
-        name: vanshv/backend-crm:latest
-        source: pull
-    - name: Stop docker compose
-      command: docker compose down
+    # - name: Pull frontend image
+    #   docker_image:
+    #     name: vanshv/frontend-crm:latest
+    #     source: pull
+    # - name: Pull backend image
+    #   docker_image:
+    #     name: vanshv/backend-crm:latest
+    #     source: pull
+    # - name: Stop docker compose
+    #   command: docker compose down
     - name: Get All Images and Build
       command: docker compose build
     - name: Run Services
