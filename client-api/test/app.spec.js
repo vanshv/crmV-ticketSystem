@@ -54,7 +54,6 @@ describe("user login", () => {
       const userBody = response.body;
       expect(userBody).to.have.property("message").to.equal("Login Successful");
       expect(userBody).to.have.property("status").to.equal("success");
-      ajwt = userBody.accessJWT;
     } catch (error) {
       console.error("Error:", error);
     }
